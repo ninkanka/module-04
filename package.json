@@ -1,0 +1,20 @@
+{
+  "name": "module-4",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+  "test": "wdio run ./wdio.conf.js"
+},
+  "keywords": [],
+  "author": "Nina Stasenko",
+  "license": "ISC",
+  "description": "Task For Module [04]",
+  "devDependencies": {
+    "@wdio/cli": "^10.0.2",
+    "@wdio/local-runner": "^10.0.2",
+    "@wdio/mocha-framework": "^10.0.1",
+    "@wdio/spec-reporter": "^10.0.1",
+    "chai": "^6.3.0"
+  }
+}
