@@ -11,7 +11,7 @@ export const LANGUAGES = ['DE', 'FR', 'NL', 'TR'];
 
 export const USERS = {
     valid: {
-        email: 'customer@practicesoftwaretesting.com',
+        email: 'customer2@practicesoftwaretesting.com',
         password: 'welcome01',
     },
 

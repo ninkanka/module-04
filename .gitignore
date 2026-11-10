@@ -1,2 +1,6 @@
 node_modules/
 .wdio-*
+reports/
+.env
+logs/
+wdio-*.log
