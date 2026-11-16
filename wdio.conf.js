@@ -1,3 +1,4 @@
+import { mkdirSync } from 'node:fs'; //temporary
 import { ReportAggregator } from '@wdio/html-reporter';
 let reportAggregator;
 
@@ -70,6 +71,14 @@ export const config = {
 
     onComplete: async function () {
         await reportAggregator.createReport();
+    },
+    afterTest: async function (test, context, { error }) {
+        if (error) {
+            mkdirSync('./reports/screenshots', { recursive: true });
+            await browser.saveScreenshot(
+                `./reports/screenshots/${test.title.replace(/\W+/g, '_')}.png`
+            );
+        }
     },
     mochaOpts: {
         ui: 'bdd',
