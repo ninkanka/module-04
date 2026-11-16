@@ -4,7 +4,6 @@ import ProductPage from '../pages/product.page.js';
 import { BUTTONS } from '../utils/testData.js';
 
 describe('Feature: Actions with products', () => {
-
     it('Scenario: User reads product details page', async () => {
         // Given the user is on the home page / When the user clicks on a product card
         await HomePage.open();
@@ -20,7 +19,7 @@ describe('Feature: Actions with products', () => {
         const buttons = await ProductPage.actionButtonsDisplayed([
             BUTTONS.addToCart,
             BUTTONS.addToFavorites,
-            BUTTONS.compare
+            BUTTONS.compare,
         ]);
         buttons.should.deep.equal([true, true, true]);
     });

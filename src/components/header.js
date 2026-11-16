@@ -1,33 +1,56 @@
 import { elementHelper } from '../utils/elementHelper.js';
 
 class HeaderComponent {
-    get idLanguageDropdown() { return $('[data-test="language-select"]'); }
-    get languageDropdownMenu() { return $('#dropdown-animated'); }
+    get idLanguageDropdown() {
+        return $('[data-test="language-select"]');
+    }
+    get languageDropdownMenu() {
+        return $('#dropdown-animated');
+    }
     languageOption(lang) {
         return $(`[data-test="lang-${lang.toLowerCase()}"]`);
     }
 
-    get idUserMenuButton() { return $('[data-test="nav-menu"]'); }
-    get idUserNameText() { return $('[data-test="nav-menu"]'); }
-    get idSignOutLink() { return $('[data-test="nav-sign-out"]'); }
-    get idSignInLink() { return $('[data-test="nav-sign-in"]'); }
-    get idMyFavoritesLink() { return $('[data-test="nav-my-favorites"]'); }
-    get idMyAccountLink() { return $('[data-test="nav-my-account"]'); }
+    get idUserMenuButton() {
+        return $('[data-test="nav-menu"]');
+    }
+    get idUserNameText() {
+        return $('[data-test="nav-menu"]');
+    }
+    get idSignOutLink() {
+        return $('[data-test="nav-sign-out"]');
+    }
+    get idSignInLink() {
+        return $('[data-test="nav-sign-in"]');
+    }
+    get idMyFavoritesLink() {
+        return $('[data-test="nav-my-favorites"]');
+    }
+    get idMyAccountLink() {
+        return $('[data-test="nav-my-account"]');
+    }
 
-    get idHomeLink() { return $('[data-test="nav-home"]'); }
-    get idCategoriesButton() { return $('[data-test="nav-categories"]'); }
-    get idMainMenuContact() { return $('[data-test="nav-contact"]'); }
-    get idCartLink() { return $('[data-test="nav-cart"]'); }
+    get idHomeLink() {
+        return $('[data-test="nav-home"]');
+    }
+    get idCategoriesButton() {
+        return $('[data-test="nav-categories"]');
+    }
+    get idMainMenuContact() {
+        return $('[data-test="nav-contact"]');
+    }
+    get idCartLink() {
+        return $('[data-test="nav-cart"]');
+    }
 
     async changeLanguage(lang) {
         await elementHelper.waitAndClick(this.idLanguageDropdown);
         await this.languageDropdownMenu.waitForDisplayed();
         await elementHelper.waitAndClick(this.languageOption(lang));
 
-        await browser.waitUntil(
-            async () => (await this.currentLanguage()) === lang.toLowerCase(),
-            { timeoutMsg: `Language was not changed to ${lang}` }
-        );
+        await browser.waitUntil(async () => (await this.currentLanguage()) === lang.toLowerCase(), {
+            timeoutMsg: `Language was not changed to ${lang}`,
+        });
     }
 
     async currentLanguage() {

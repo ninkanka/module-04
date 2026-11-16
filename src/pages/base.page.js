@@ -1,5 +1,5 @@
 export default class BasePage {
-        get idPageHeader() {
+    get idPageHeader() {
         return $('[data-test="nav-home"]');
     }
 

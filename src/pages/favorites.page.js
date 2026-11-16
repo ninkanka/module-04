@@ -2,7 +2,9 @@ import BasePage from './base.page.js';
 import { PATHS } from '../utils/testData.js';
 
 class FavoritesPage extends BasePage {
-    get productNameElements() { return $$('[data-test="product-name"]'); }
+    get productNameElements() {
+        return $$('[data-test="product-name"]');
+    }
 
     async open() {
         await super.open(PATHS.favorites);

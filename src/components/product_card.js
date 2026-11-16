@@ -5,8 +5,12 @@ class ProductCard {
         this.element = element;
     }
 
-    get name() { return this.element.$('[data-test="product-name"]'); }
-    get price() { return this.element.$('[data-test="product-price"]'); }
+    get name() {
+        return this.element.$('[data-test="product-name"]');
+    }
+    get price() {
+        return this.element.$('[data-test="product-price"]');
+    }
 
     async getName() {
         return this.name.getText();

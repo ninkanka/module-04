@@ -7,7 +7,6 @@ import FavoritesPage from '../pages/favorites.page.js';
 import { USERS } from '../utils/testData.js';
 
 describe('Feature: Favorite products', () => {
-
     beforeEach(async () => {
         await LoginPage.open();
         await LoginPage.login(USERS.valid.email, USERS.valid.password);
