@@ -12,7 +12,7 @@ How to run? 1. npm install 2. npm test
 - HTML reportel is in folder reports and will open automatically OR after executing tests please use command `start reports\html-reports\master-report.html`
   For HTMP report you need version Chrome 157 or higher!
 
-  ## Code Quality
+    ## Code Quality
 
 This project uses **Prettier** for code formatting and **ESLint** for code quality checks.
 
