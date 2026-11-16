@@ -5,9 +5,15 @@ import { PATHS } from '../utils/testData.js';
 const CARD = 'a.card[data-test^="product-"]';
 
 class HomePage extends BasePage {
-    get searchInput() { return $('[data-test="search-query"]'); }
-    get searchButton() { return $('[data-test="search-submit"]'); }
-    get productCards() { return $$(CARD); }
+    get searchInput() {
+        return $('[data-test="search-query"]');
+    }
+    get searchButton() {
+        return $('[data-test="search-submit"]');
+    }
+    get productCards() {
+        return $$(CARD);
+    }
 
     async open() {
         await super.open(PATHS.home);
@@ -18,17 +24,19 @@ class HomePage extends BasePage {
         await browser.waitUntil(
             async () => {
                 const names = await this.productNames();
-                return names.length > 0 &&
-                    names.every((name) => name.toLowerCase().includes(term.toLowerCase()));
+                return (
+                    names.length > 0 &&
+                    names.every((name) => name.toLowerCase().includes(term.toLowerCase()))
+                );
             },
             { timeout: 10000, timeoutMsg: `Product "${term}" was not found` }
         );
     }
     async waitForProducts() {
-        await browser.waitUntil(
-            async () => (await this.productCards).length > 0,
-            { timeout: 10000, timeoutMsg: 'Product cards did not appear' }
-        );
+        await browser.waitUntil(async () => (await this.productCards).length > 0, {
+            timeout: 10000,
+            timeoutMsg: 'Product cards did not appear',
+        });
     }
     async cards() {
         await this.waitForProducts();
@@ -37,12 +45,13 @@ class HomePage extends BasePage {
     }
     async productCount() {
         return (await this.cards()).length;
-    }    
+    }
     async productNames() {
         await this.waitForProducts();
         return browser.execute(() =>
-            Array.from(document.querySelectorAll('[data-test="product-name"]'))
-                .map((element) => element.textContent.trim())
+            Array.from(document.querySelectorAll('[data-test="product-name"]')).map((element) =>
+                element.textContent.trim()
+            )
         );
     }
     async productPrices() {
@@ -61,11 +70,11 @@ class HomePage extends BasePage {
         const before = (await this.productNames()).join('|');
         await action();
         try {
-            await browser.waitUntil(
-                async () => (await this.productNames()).join('|') !== before,
-                { timeout: 5000 }
-            );
+            await browser.waitUntil(async () => (await this.productNames()).join('|') !== before, {
+                timeout: 5000,
+            });
         } catch {
+            //The list may not change, this is acceptable for this scenario
         }
     }
 }

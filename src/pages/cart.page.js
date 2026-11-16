@@ -3,8 +3,12 @@ import { elementHelper } from '../utils/elementHelper.js';
 import { PATHS } from '../utils/testData.js';
 
 class CartPage extends BasePage {
-    get classCartItems() { return $$('[data-test="product-title"]'); }
-    get classDeleteItemButtons() { return $$('a.btn.btn-danger'); }
+    get classCartItems() {
+        return $$('[data-test="product-title"]');
+    }
+    get classDeleteItemButtons() {
+        return $$('a.btn.btn-danger');
+    }
     get idCartEmptyMessage() {
         return $('//p[normalize-space()="The cart is empty. Nothing to display."]');
     }
@@ -14,10 +18,10 @@ class CartPage extends BasePage {
     }
 
     async waitForItems() {
-        await browser.waitUntil(
-            async () => (await this.classCartItems).length > 0,
-            { timeout: 10000, timeoutMsg: 'No products appeared in the shopping cart' }
-        );
+        await browser.waitUntil(async () => (await this.classCartItems).length > 0, {
+            timeout: 10000,
+            timeoutMsg: 'No products appeared in the shopping cart',
+        });
     }
 
     async itemNames() {

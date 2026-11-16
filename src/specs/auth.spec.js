@@ -13,7 +13,10 @@ describe('Feature: User authentication', () => {
     it('Scenario: User signs in with valid information', async () => {
         await LoginPage.open();
         await LoginPage.login(USERS.valid.email, USERS.valid.password);
-        assert.isTrue(await HeaderComponent.isUserMenuDisplayed(), 'user menu should be visible after login');
+        assert.isTrue(
+            await HeaderComponent.isUserMenuDisplayed(),
+            'user menu should be visible after login'
+        );
     });
 
     it('Scenario: User signs up', async () => {
@@ -22,7 +25,11 @@ describe('Feature: User authentication', () => {
         await RegisterPage.fillRegistrationForm(USERS.newUser);
         await RegisterPage.submitRegistration();
         await RegisterPage.waitForRegistrationToFinish();
-        assert.notInclude(await browser.getUrl(), PATHS.register, 'user should leave the registration page after registration');
+        assert.notInclude(
+            await browser.getUrl(),
+            PATHS.register,
+            'user should leave the registration page after registration'
+        );
     });
 
     describe('Scenario: User signs out', () => {
@@ -34,7 +41,11 @@ describe('Feature: User authentication', () => {
         it('shows "Sign in" instead of the username', async () => {
             await HeaderComponent.openUserMenu();
             await HeaderComponent.clickSignOut();
-            assert.equal(await HeaderComponent.signInLinkText(), 'Sign in', 'header should show Sign in after logout');
+            assert.equal(
+                await HeaderComponent.signInLinkText(),
+                'Sign in',
+                'header should show Sign in after logout'
+            );
         });
     });
 });

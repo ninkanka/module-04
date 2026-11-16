@@ -1,21 +1,30 @@
 {
-  "name": "module-4",
-  "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "wdio run ./wdio.conf.js"
-  },
-  "keywords": [],
-  "author": "Nina Stasenko",
-  "license": "ISC",
-  "description": "Task For Module [04]",
-  "devDependencies": {
-    "@wdio/cli": "^10.0.2",
-    "@wdio/html-reporter": "^10.2.0",
-    "@wdio/local-runner": "^10.0.2",
-    "@wdio/mocha-framework": "^10.0.1",
-    "@wdio/spec-reporter": "^10.0.1",
-    "chai": "^6.3.0"
-  }
+    "name": "module-4",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "wdio run ./wdio.conf.js",
+        "lint": "eslint . --max-warnings 0",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check ."
+    },
+    "keywords": [],
+    "author": "Nina Stasenko",
+    "license": "ISC",
+    "description": "Task For Module [04]",
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@wdio/cli": "^10.0.2",
+        "@wdio/html-reporter": "^10.2.0",
+        "@wdio/local-runner": "^10.0.2",
+        "@wdio/mocha-framework": "^10.0.1",
+        "@wdio/spec-reporter": "^10.0.1",
+        "chai": "^6.3.0",
+        "eslint": "^10.15.0",
+        "eslint-config-prettier": "^10.1.8",
+        "globals": "^17.14.0",
+        "prettier": "^3.10.1"
+    }
 }

@@ -60,5 +60,6 @@ export const CONTACT = {
     lastName: 'Nowak',
     email: 'aaa@gmail.com',
     subject: 'Customer service',
-    message: 'Hello! Where is my hummer? My order number is 208 from 12.12.2025, please will contact with me',
+    message:
+        'Hello! Where is my hummer? My order number is 208 from 12.12.2025, please will contact with me',
 };

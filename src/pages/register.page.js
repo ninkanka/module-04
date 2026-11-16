@@ -3,19 +3,45 @@ import { elementHelper } from '../utils/elementHelper.js';
 import { PATHS } from '../utils/testData.js';
 
 class RegisterPage extends BasePage {
-    get idRegisterFirstNameInput() { return $('[data-test="first-name"]'); }
-    get idRegisterLastNameInput() { return $('[data-test="last-name"]'); }
-    get idRegisterDobInput() { return $('[data-test="dob"]'); }
-    get idRegisterStreetInput() { return $('[data-test="street"]'); }
-    get idRegisterHouseNumberInput() { return $('[data-test="house_number"]'); }
-    get idRegisterPostalCodeInput() { return $('[data-test="postal_code"]'); }
-    get idRegisterCityInput() { return $('[data-test="city"]'); }
-    get idRegisterStateInput() { return $('[data-test="state"]'); }
-    get idRegisterCountrySelect() { return $('[data-test="country"]'); }
-    get idRegisterPhoneInput() { return $('[data-test="phone"]'); }
-    get idRegisterEmailInput() { return $('[data-test="email"]'); }
-    get idRegisterPasswordInput() { return $('[data-test="password"]'); }
-    get idRegisterButton() { return $('[data-test="register-submit"]'); }
+    get idRegisterFirstNameInput() {
+        return $('[data-test="first-name"]');
+    }
+    get idRegisterLastNameInput() {
+        return $('[data-test="last-name"]');
+    }
+    get idRegisterDobInput() {
+        return $('[data-test="dob"]');
+    }
+    get idRegisterStreetInput() {
+        return $('[data-test="street"]');
+    }
+    get idRegisterHouseNumberInput() {
+        return $('[data-test="house_number"]');
+    }
+    get idRegisterPostalCodeInput() {
+        return $('[data-test="postal_code"]');
+    }
+    get idRegisterCityInput() {
+        return $('[data-test="city"]');
+    }
+    get idRegisterStateInput() {
+        return $('[data-test="state"]');
+    }
+    get idRegisterCountrySelect() {
+        return $('[data-test="country"]');
+    }
+    get idRegisterPhoneInput() {
+        return $('[data-test="phone"]');
+    }
+    get idRegisterEmailInput() {
+        return $('[data-test="email"]');
+    }
+    get idRegisterPasswordInput() {
+        return $('[data-test="password"]');
+    }
+    get idRegisterButton() {
+        return $('[data-test="register-submit"]');
+    }
 
     async open() {
         await super.open(PATHS.register);
@@ -25,11 +51,15 @@ class RegisterPage extends BasePage {
         await input.waitForDisplayed();
 
         if ((await input.getAttribute('type')) === 'date') {
-            await browser.execute((element, date) => {
-                element.value = date;
-                element.dispatchEvent(new Event('input', { bubbles: true }));
-                element.dispatchEvent(new Event('change', { bubbles: true }));
-            }, input, value);
+            await browser.execute(
+                (element, date) => {
+                    element.value = date;
+                    element.dispatchEvent(new Event('input', { bubbles: true }));
+                    element.dispatchEvent(new Event('change', { bubbles: true }));
+                },
+                input,
+                value
+            );
         } else {
             await input.setValue(value);
             await browser.keys('Tab');
@@ -68,7 +98,9 @@ class RegisterPage extends BasePage {
             );
         } catch {
             const errors = await browser.execute(() =>
-                Array.from(document.querySelectorAll('.alert-danger, .invalid-feedback, .text-danger'))
+                Array.from(
+                    document.querySelectorAll('.alert-danger, .invalid-feedback, .text-danger')
+                )
                     .map((element) => element.textContent.trim())
                     .filter(Boolean)
             );
