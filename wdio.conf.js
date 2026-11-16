@@ -9,6 +9,12 @@ export const config = {
         {
             browserName: 'chrome',
             'goog:chromeOptions': {
+                args: [
+                    '--headless=new',
+                    '--no-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--window-size=1920,1080',
+                ],
                 prefs: {
                     credentials_enable_service: false, // this will disable the password manager
                     'profile.password_manager_enabled': false,
