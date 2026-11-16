@@ -11,17 +11,22 @@ export const config = {
             browserName: 'chrome',
             'goog:chromeOptions': {
                 args: [
+                    '--disable-infobars',
+                    '--disable-gpu',
                     '--headless=new',
+                    '--disable-blink-features=AutomationControlled',
                     '--no-sandbox',
                     '--disable-dev-shm-usage',
                     '--window-size=1920,1080',
                 ],
+                excludeSwitches: ['enable-automation'],
                 prefs: {
                     credentials_enable_service: false, // this will disable the password manager
                     'profile.password_manager_enabled': false,
                     'profile.password_manager_leak_detection': false,
                     'autofill.profile_enabled': false,
                     'autofill.credit_card_enabled': false,
+                    'profile.default_content_setting_values.notifications': 2,
                 },
             },
         },
